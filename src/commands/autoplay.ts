@@ -59,7 +59,7 @@ export class AutoPlay {
 
       player.setAutoPlay(autoPlay)
       await interaction.reply({
-        content: `:white_check_mark: ${autoPlay ? "Enabled" : "Disabled"} Auto-Play`,
+        content: `:white_check_mark: ${autoPlay ? "Enabled" : "Disabled"} Auto-Play.`,
         ephemeral: true,
       })
     } catch (error) {
