@@ -14,7 +14,7 @@ export class Uptime {
     if (!interaction) return
 
     await interaction.reply({
-      content: `Bot is up since <t:${startDate}:R>.`,
+      content: `Bot is up since <t:${Math.floor(startDate / 1000)}:R>.`,
       ephemeral: true,
     })
   }
