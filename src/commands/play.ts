@@ -60,6 +60,13 @@ export class Play {
           setDeaf: true,
           setMute: false,
         })
+      } else if (player.voiceChannelId != member.voice.channelId) {
+        await interaction.reply({
+          content: `:x: You are not in the same voice channel as bot.`,
+          ephemeral: true,
+        })
+
+        return
       }
 
       const results = await bot.moonlink.search({
