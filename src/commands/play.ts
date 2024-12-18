@@ -52,7 +52,7 @@ export class Play {
         voiceChannelId: voiceChannel.id,
         textChannelId: interaction.channelId,
         autoPlay: autoPlay,
-        autoLeave: true,
+        autoLeave: !autoPlay,
       })
 
       if (!player.connected) {
