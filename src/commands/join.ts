@@ -9,16 +9,7 @@ export class Join {
     description: "Joins a voice channel.",
     name: "join",
   })
-  async join(
-    @SlashOption({
-      description: "Enable or disable Auto-Play?",
-      name: "auto-play",
-      required: false,
-      type: ApplicationCommandOptionType.Boolean,
-    })
-    autoPlay: boolean = false,
-    interaction: CommandInteraction
-  ): Promise<void> {
+  async join(interaction: CommandInteraction): Promise<void> {
     // Interaction or its needed property is undefined :thinking:
     if (!interaction || !interaction.guildId || !interaction.member) return
 
@@ -43,7 +34,6 @@ export class Join {
         guildId: interaction.guildId,
         voiceChannelId: voiceChannel.id,
         textChannelId: interaction.channelId,
-        autoPlay: autoPlay,
         autoLeave: true,
       })
 
