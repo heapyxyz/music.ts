@@ -6,6 +6,7 @@ import { Manager } from "moonlink.js"
 import { MusicClient } from "./utils/client.js"
 import { handleEvents } from "./utils/events.js"
 
+export const startDate = Date.now()
 export const bot = new MusicClient(
   {
     intents: [
