@@ -18,13 +18,6 @@ export class Play {
       type: ApplicationCommandOptionType.String,
     })
     query: string,
-    @SlashOption({
-      description: "Enable or disable Auto-Play?",
-      name: "auto-play",
-      required: false,
-      type: ApplicationCommandOptionType.Boolean,
-    })
-    autoPlay: boolean = false,
     interaction: CommandInteraction
   ): Promise<void> {
     // Interaction or its needed property is undefined :thinking:
@@ -51,8 +44,7 @@ export class Play {
         guildId: interaction.guildId,
         voiceChannelId: voiceChannel.id,
         textChannelId: interaction.channelId,
-        autoPlay: autoPlay,
-        autoLeave: !autoPlay,
+        autoLeave: true,
       })
 
       if (!player.connected) {
