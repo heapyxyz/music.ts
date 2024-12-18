@@ -67,6 +67,7 @@ export class Join {
         setDeaf: true,
         setMute: false,
       })
+      await interaction.reply(`## :arrow_right: Joined a voice channel`)
     } catch (error) {
       console.error(`Error in /join: ${error}`)
     }

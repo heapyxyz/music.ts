@@ -49,6 +49,7 @@ export class Leave {
       }
 
       player.destroy()
+      await interaction.reply(`## :arrow_left: Left a voice channel`)
     } catch (error) {
       console.error(`Error in /leave: ${error}`)
     }
