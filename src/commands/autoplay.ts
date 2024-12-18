@@ -4,12 +4,12 @@ import { Discord, Slash, SlashOption } from "discordx"
 import { bot } from "../main.js"
 
 @Discord()
-export class Play {
+export class AutoPlay {
   @Slash({
     description: "Enables or disabled Auto-Play.",
     name: "autoplay",
   })
-  async play(
+  async autoplay(
     @SlashOption({
       description: "Enable Auto-Play?",
       name: "enabled",
