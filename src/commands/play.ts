@@ -7,7 +7,7 @@ import { playlistMessage, trackMessage } from "../utils/message.js"
 @Discord()
 export class Play {
   @Slash({
-    description: "Plays music",
+    description: "Adds song(s) to queue using query.",
     name: "play",
   })
   async play(
