@@ -4,6 +4,10 @@ Bot supports YouTube, Spotify and SoundCloud, but **it doesn't mean other source
 Sources like Twitch, Deezer or Bandcamp will (most likely) work fine - I just never tested them.  
 It is **highly** recommended to use [NodeLink](https://github.com/PerformanC/NodeLink) over [Lavalink](https://github.com/lavalink-devs/Lavalink) when hosting music.ts!
 
+# Invite music.ts
+You can invite music.ts hosted by me by clicking [here](https://discord.com/oauth2/authorize?client_id=1250508209224028290).  
+Uptime is above 90% - expect restarts sometimes (when a feature or fix is commited).
+
 # Usage (Development)
 **Rename `.env.example` to `.env` and configure it first!**
 ```
