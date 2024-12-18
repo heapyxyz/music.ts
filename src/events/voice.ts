@@ -8,7 +8,7 @@ export class Voice {
   voiceStateUpdate([oldState, newState]: ArgsOf<"voiceStateUpdate">): void {
     const player = bot.moonlink.getPlayer(oldState.guild.id)
 
-    if (!player || !oldState.channel) return
+    if (player == undefined || !oldState.channel) return
 
     if (
       player.voiceChannelId == oldState.channelId &&

@@ -41,7 +41,7 @@ export class AutoPlay {
     try {
       const player = bot.moonlink.getPlayer(interaction.guildId)
 
-      if (!player.connected) {
+      if (player == undefined || !player.connected) {
         await interaction.reply({
           content: `:x: Bot is not connected to a voice channel.`,
           ephemeral: true,
