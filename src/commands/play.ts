@@ -1,5 +1,4 @@
-import type { CommandInteraction } from "discord.js"
-import { ApplicationCommandOptionType } from "discord.js"
+import { ApplicationCommandOptionType, CommandInteraction } from "discord.js"
 import { Discord, Slash, SlashOption } from "discordx"
 
 import { bot } from "../main.js"
