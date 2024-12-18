@@ -31,7 +31,7 @@ export class Join {
     const voiceChannel = member.voice.channel
     if (!voiceChannel) {
       await interaction.reply({
-        content: `:x: Join a voice channel first!`,
+        content: `:x: Join a voice channel first.`,
         ephemeral: true,
       })
 
