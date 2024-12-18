@@ -1,7 +1,7 @@
 import { IPlaylistInfo, Track } from "moonlink.js"
 
 export function trackMessage(title: string, track: Track): string {
-  return `## ${title}\n[**${track.title}**](<${track.url}>)\n-# By **${track.author}** | Duration: **${track.duration}**`
+  return `## ${title}\n[**${track.title.replaceAll(/\[|\]/g, "")}**](<${track.url}>)\n-# By **${track.author}** | Duration: **${track.duration}**`
 }
 
 export function playlistMessage(
@@ -9,5 +9,5 @@ export function playlistMessage(
   playlist: IPlaylistInfo,
   url: string
 ): string {
-  return `## ${title}\n[**${playlist.name}**](<${url}>)\n-# Duration: **${playlist.duration}**`
+  return `## ${title}\n[**${playlist.name.replaceAll(/\[|\]/g, "")}**](<${url}>)\n-# Duration: **${playlist.duration}**`
 }
