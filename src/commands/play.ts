@@ -47,71 +47,75 @@ export class Play {
       return
     }
 
-    const player = bot.moonlink.createPlayer({
-      guildId: interaction.guildId,
-      voiceChannelId: voiceChannel.id,
-      textChannelId: interaction.channelId,
-      autoPlay: autoPlay,
-    })
-
-    if (!player.connected) {
-      player.connect({
-        setDeaf: true,
-        setMute: false,
-      })
-    }
-
-    const results = await bot.moonlink.search({
-      query,
-      source: "youtube",
-      requester: interaction.user.id,
-    })
-
-    if (results.loadType == "loadfailed") {
-      await interaction.reply({
-        content: `:x: Failed to load the track.`,
-        ephemeral: true,
+    try {
+      const player = bot.moonlink.createPlayer({
+        guildId: interaction.guildId,
+        voiceChannelId: voiceChannel.id,
+        textChannelId: interaction.channelId,
+        autoPlay: autoPlay,
       })
 
-      return
-    } else if (results.loadType == "empty") {
-      await interaction.reply({
-        content: `:x: No results.`,
-        ephemeral: true,
+      if (!player.connected) {
+        player.connect({
+          setDeaf: true,
+          setMute: false,
+        })
+      }
+
+      const results = await bot.moonlink.search({
+        query,
+        source: "youtube",
+        requester: interaction.user.id,
       })
 
-      return
+      if (results.loadType == "loadfailed") {
+        await interaction.reply({
+          content: `:x: Failed to load the track.`,
+          ephemeral: true,
+        })
+
+        return
+      } else if (results.loadType == "empty") {
+        await interaction.reply({
+          content: `:x: No results.`,
+          ephemeral: true,
+        })
+
+        return
+      }
+
+      if (results.loadType == "playlist") {
+        const message = await interaction.reply(
+          playlistMessage(
+            ":arrows_counterclockwise: Adding Playlist to Queue...",
+            results.playlistInfo,
+            query
+          )
+        )
+
+        for (const track of results.tracks) player.queue.add(track)
+
+        await message.edit(
+          playlistMessage(
+            ":white_check_mark: Added Playlist to Queue!",
+            results.playlistInfo,
+            query
+          )
+        )
+      } else {
+        player.queue.add(results.tracks[0])
+
+        await interaction.reply(
+          trackMessage(
+            ":white_check_mark: Added Track to Queue",
+            results.tracks[0]
+          )
+        )
+      }
+
+      if (!player.playing) await player.play()
+    } catch (error) {
+      console.error(`Error in /play: ${error}`)
     }
-
-    if (results.loadType == "playlist") {
-      const message = await interaction.reply(
-        playlistMessage(
-          ":arrows_counterclockwise: Adding Playlist to Queue...",
-          results.playlistInfo,
-          query
-        )
-      )
-
-      for (const track of results.tracks) player.queue.add(track)
-
-      await message.edit(
-        playlistMessage(
-          ":white_check_mark: Added Playlist to Queue!",
-          results.playlistInfo,
-          query
-        )
-      )
-    } else {
-      player.queue.add(results.tracks[0])
-
-      await interaction.reply(
-        trackMessage(
-          ":white_check_mark: Added Track to Queue",
-          results.tracks[0]
-        )
-      )
-    }
-
-    if (!player.playing) await player.play()
   }
 }
