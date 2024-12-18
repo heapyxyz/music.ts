@@ -34,7 +34,7 @@ export class Leave {
 
       if (!player.connected) {
         await interaction.reply({
-          content: `:x: Bot is already not in a voice channel.`,
+          content: `:x: Bot is not connected to a voice channel.`,
           ephemeral: true,
         })
 
