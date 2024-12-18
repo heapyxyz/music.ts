@@ -27,10 +27,36 @@ export function handleEvents() {
 
   bot.moonlink.on(
     "trackEnd",
-    (player: Player, track: Track, type: TTrackEndType, payload?: any) =>
+    async (
+      player: Player,
+      track: Track,
+      type: TTrackEndType,
+      payload?: any
+    ) => {
       console.log(
         `trackEnd: ${track.title} by ${track.author} in ${player.guildId}`
       )
+
+      try {
+        if (
+          player.queue.size == 0 &&
+          player.autoPlay &&
+          !track.url?.startsWith("https://www.youtube.com/")
+        ) {
+          player.destroy()
+
+          const channel = bot.channels.cache.get(
+            player.textChannelId
+          ) as TextChannel
+          if (channel)
+            await channel.send(
+              ":x: Auto-Play was enabled and a Non-YouTube track has ended with no other tracks left in queue. Auto-Play only works with YouTube tracks. Spotify and SoundCloud support will be added later!"
+            )
+        }
+      } catch (error) {
+        console.error(`Error in 'trackEnd': ${error}`)
+      }
+    }
   )
 
   bot.moonlink.on(
