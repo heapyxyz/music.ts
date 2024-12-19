@@ -96,7 +96,7 @@ export class Play {
 
         await message.edit(
           playlistMessage(
-            ":white_check_mark: Added Playlist to Queue!",
+            ":white_check_mark: Added Playlist to Queue",
             results.playlistInfo,
             query
           )
