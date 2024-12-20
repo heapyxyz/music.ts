@@ -6,17 +6,17 @@ import { bot } from "../main.js"
 @Discord()
 export class AutoPlay {
   @Slash({
-    description: "Enables or disabled Auto-Play.",
+    description: "Manages Auto-Play.",
     name: "autoplay",
   })
   async autoplay(
     @SlashOption({
       description: "Enable Auto-Play?",
-      name: "enabled",
+      name: "option",
       required: true,
       type: ApplicationCommandOptionType.Boolean,
     })
-    autoPlay: boolean,
+    option: boolean,
     interaction: CommandInteraction
   ): Promise<void> {
     // Interaction or its needed property is undefined :thinking:
@@ -57,11 +57,11 @@ export class AutoPlay {
         return
       }
 
-      player.setAutoPlay(autoPlay)
-      player.setAutoLeave(!autoPlay)
+      player.setAutoPlay(option)
+      player.setAutoLeave(!option)
 
       await interaction.reply({
-        content: `:white_check_mark: ${autoPlay ? "Enabled" : "Disabled"} Auto-Play.`,
+        content: `:white_check_mark: ${option ? "Enabled" : "Disabled"} Auto-Play.`,
         ephemeral: true,
       })
     } catch (error) {
