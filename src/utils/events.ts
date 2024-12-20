@@ -71,7 +71,7 @@ export function handleEvents() {
     "trackException",
     (player: Player, track: Track, exception: any) =>
       console.log(
-        `trackException: ${track.title} by ${track.author} (${exception}) in ${player.guildId}`
+        `trackException: ${track.title} by ${track.author} - (${exception.message}) in ${player.guildId}`
       )
   )
 
