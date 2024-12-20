@@ -69,10 +69,32 @@ export function handleEvents() {
 
   bot.moonlink.on(
     "trackException",
-    (player: Player, track: Track, exception: any) =>
+    async (player: Player, track: Track, exception: any) => {
       console.log(
-        `trackException: ${track.title} by ${track.author} (${exception.name}: ${exception.message}) in ${player.guildId}`
+        `trackException: ${track.title} by ${track.author} (${exception.message}) in ${player.guildId}`
       )
+
+      try {
+        if (exception.message == "Sorry, this content is age-restricted") {
+          const channel = bot.channels.cache.get(
+            player.textChannelId
+          ) as TextChannel
+          if (channel && player.queue.size > 0) {
+            await player.skip()
+            await channel.send(
+              ":x: This track appears to be age-restricted - skipping!"
+            )
+          } else if (channel && player.queue.size == 0) {
+            player.destroy()
+            await channel.send(
+              ":x: This track appears to be age-restricted - leaving!"
+            )
+          }
+        }
+      } catch (error) {
+        console.error(`Error in 'trackEnd': ${error}`)
+      }
+    }
   )
 
   bot.once("ready", async () => {
