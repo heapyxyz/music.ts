@@ -1,5 +1,5 @@
 # Introduction
-Music.ts is a Discord music bot made in TypeScript with [Moonlink.js](https://github.com/Ecliptia/moonlink.js) and [DiscordX](https://github.com/discordx-ts/discordx).  
+Music.ts is a Discord music bot written in TypeScript with [Moonlink.js](https://github.com/Ecliptia/moonlink.js) and [DiscordX](https://github.com/discordx-ts/discordx).  
 Bot supports YouTube, Spotify and SoundCloud, but **it doesn't mean other sources won't work!**  
 Sources like Twitch, Deezer or Bandcamp will (most likely) work fine - I just never tested them. 
 > [!NOTE]
