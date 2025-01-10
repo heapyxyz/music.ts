@@ -29,7 +29,7 @@ export const bot = new MusicClient(
         secure: false,
       },
     ],
-    options: { previousInArray: true },
+    options: { previousInArray: true, autoResume: true, resume: true },
     sendPayload: (guildId: string, payload: string) => {
       const guild = bot.guilds.cache.get(guildId)
       if (guild) guild.shard.send(JSON.parse(payload))
