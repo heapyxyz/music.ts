@@ -97,13 +97,13 @@ export function handleEvents() {
     }
   )
 
-  bot.moonlink.on("queueEnd", (player: Player, track?: any) =>
-    console.log(`queueEnd in ${player.guildId}`)
-  )
+  // bot.moonlink.on("queueEnd", (player: Player, track?: any) =>
+  //   console.log(`queueEnd in ${player.guildId}`)
+  // )
 
-  bot.moonlink.on("autoLeaved", (player: Player, track: Track) =>
-    console.log(`autoLeaved in ${player.guildId}`)
-  )
+  // bot.moonlink.on("autoLeaved", (player: Player, track: Track) =>
+  //   console.log(`autoLeaved in ${player.guildId}`)
+  // )
 
   bot.once("ready", async () => {
     await bot.moonlink.init(bot.user!.id)
