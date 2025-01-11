@@ -64,7 +64,7 @@ export class Play {
       const results = await bot.moonlink.search({
         query,
         source: "youtube",
-        requester: interaction.user.id,
+        requester: interaction.user,
       })
 
       if (results.loadType == "loadfailed") {
