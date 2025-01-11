@@ -109,6 +109,7 @@ export function handleEvents() {
     await bot.moonlink.init(bot.user!.id)
     await bot.initApplicationCommands()
 
+    console.log(`Moonlink v${bot.moonlink.version}`)
     console.log(`Logged in as ${bot.user!.username} (${bot.user!.id})`)
   })
 
