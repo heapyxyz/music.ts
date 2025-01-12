@@ -101,6 +101,11 @@ export function handleEvents() {
     console.log(`playerConnected in ${player.guildId}`)
   )
 
+  bot.moonlink.on("playerDisconnected", (player: Player) => {
+    player.destroy()
+    console.log(`playerDisconnected in ${player.guildId}`)
+  })
+
   bot.moonlink.on("queueEnd", (player: Player, track?: any) =>
     console.log(`queueEnd in ${player.guildId}`)
   )
