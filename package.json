@@ -16,7 +16,7 @@
     "discord.js": "^14.17.3",
     "discordx": "^11.12.2",
     "dotenv": "^16.4.7",
-    "moonlink.js": "^4.4.6"
+    "moonlink.js": "^4.4.7"
   },
   "devDependencies": {
     "@types/node": "^20.17.12",
