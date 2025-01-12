@@ -97,6 +97,10 @@ export function handleEvents() {
     }
   )
 
+  bot.moonlink.on("playerConnected", (player: Player) =>
+    console.log(`playerConnected in ${player.guildId}`)
+  )
+
   bot.moonlink.on("queueEnd", (player: Player, track?: any) =>
     console.log(`queueEnd in ${player.guildId}`)
   )
